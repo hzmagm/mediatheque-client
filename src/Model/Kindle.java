@@ -46,11 +46,11 @@ public class Kindle {
     public String toString() {
         String empr;
         if(Emprunte==true){
-            empr="Emprunter";
+           return "Kindle [ " + "id = " + id + ", Modele = " + Modele + ", Mac = " + Mac + ", Emprunte =  Emprunter";
         }else{
-            empr="Non Emprunter";
+            return "Kindle [ " + "id = " + id + ", Modele = " + Modele + ", Mac = " + Mac + ", Emprunte = Non Emprunter";
         }
-        return "Kindle [ " + "id = " + id + ", Modele = " + Modele + ", Mac = " + Mac + ", Emprunte = " + empr + " ] ";
+        
     }
     
     

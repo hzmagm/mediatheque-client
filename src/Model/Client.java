@@ -4,8 +4,8 @@ package Model;
 import java.io.Serializable;
 
 
-public class Client  implements Serializable{
-   private int idClient;
+public class Client implements Serializable {
+    private int idClient;
     private String Nom;
     private String Prenom;
     private int Age;
@@ -26,6 +26,20 @@ public class Client  implements Serializable{
         this.Age=c.getAge();
     }
 
+    public Client(int idClient, String Nom, String Prenom, int Age, String CNE) {
+        this.idClient = idClient;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Age = Age;
+        this.CNE = CNE;
+    }
+
+    
+
+    public String getTypeClient() {
+        return TypeClient;
+    }
+    
     public void setTypeClient(String TypeClient) {
         this.TypeClient = TypeClient;
     }
@@ -42,9 +56,7 @@ public class Client  implements Serializable{
             this.CNI = CN;
         }
     }
-public String getTypeClient() {
-        return TypeClient;
-    }
+
     public Client(int idClient, String Nom, String Prenom, int Age) {
         this.idClient = idClient;
         this.Nom = Nom;
@@ -61,7 +73,7 @@ public String getTypeClient() {
 
     public String toString() {   
         //ajouter if client is etudiant or prof
-        return "[Le Nom : "+this.getNom()+" | Le prenom : "+this.getPrenom()+" | L'Age : "+this.getAge()+"]";
+        return " [ Nom : "+this.getNom()+" | prenom : "+this.getPrenom()+" | Age : "+this.getAge()+" ] ";
     }
 
     public int getIdClient(){
