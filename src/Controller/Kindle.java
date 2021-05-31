@@ -58,8 +58,7 @@ public class Kindle {
         }
             }
                 System.out.println("bienvenue " + c.getNom() +" "+ c.getPrenom()+"\n ");
-            
-                System.out.println(kindle+"]");
+                System.out.println("vous ete connecté par le kindle : "+kindle+"]");
                 return true;
     }
     //GETTERS DE DOCUMENT
