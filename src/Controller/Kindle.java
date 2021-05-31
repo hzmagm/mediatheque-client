@@ -20,19 +20,16 @@ public class Kindle {
     String hote = "127.0.0.1" ;
     int port = 1000 ;
     public boolean Connexion() throws IOException, ClassNotFoundException{
-         String kindle;
+         String kindle=null;
          Socket soc1 = new Socket (hote, port);
          if(soc1.isConnected()){
          System.out.println("---Kindle Connecté au server---");
          }
-         
-         int i=3;
+        int i=3;
         while(c==null){ 
          try (Socket soc = new Socket (hote, port)){
             OutputStream flux1 = soc.getOutputStream() ;
-            InputStream flux2 = soc.getInputStream();
             OutputStreamWriter sortie = new OutputStreamWriter (flux1) ;
-            BufferedReader entree = new BufferedReader (new InputStreamReader (flux2));
             System.out.println("entre votr login :");
             String login= (new Scanner(System.in)).nextLine();
             sortie.write(login+"\n");
@@ -43,7 +40,11 @@ public class Kindle {
             ObjectInputStream objEnt = new ObjectInputStream(soc.getInputStream());
             Object obj = objEnt.readObject();
             c=(Client)obj;
-            if(c==null){
+            if(c!=null){
+            InputStream flux2 = soc.getInputStream();
+            BufferedReader entree = new BufferedReader (new InputStreamReader (flux2));
+            kindle=entree.readLine();
+            }else if(c==null){
                 System.out.println(" login failed ! ");
             }
             i--;
@@ -51,20 +52,16 @@ public class Kindle {
                 System.out.println("--- nombre d'essayer déja consommé Kindle va s'éteint  ---");
             return false;
             }
-            kindle = entree.readLine();
-            System.out.println(kindle);
-            soc.close();
          }
          catch(Exception e){
-            System.out.println("--- Kindle Non Connecté au server ---");
+            System.out.println(e);
         }
             }
                 System.out.println("bienvenue " + c.getNom() +" "+ c.getPrenom()+"\n ");
             
-                
+                System.out.println(kindle+"]");
                 return true;
     }
-    
     //GETTERS DE DOCUMENT
     public Document getDocumentByISBN(String ISBN) throws IOException{
         try(Socket soc=new Socket(hote,port)){
@@ -72,17 +69,14 @@ public class Kindle {
         }
         return null;
     }
-    
     public ArrayList<Document> getDocumentByTitle(String titre){
         
         return null;
     }
-    
     public ArrayList<Document> getDocumentByEditor(String Editeur){
         
         return null;
     }
-  
     public ArrayList<Document> getDocumentByAnneEdition(int AnneEdition){
         
         return null;
@@ -94,21 +88,27 @@ public class Kindle {
    public static void main(String[] args) throws IOException, ClassNotFoundException{
       Kindle k=new Kindle();
       k.Connexion();
-      if(k.c.getTypeClient().equals("Etudiant")){
-                System.out.println("Menu Etudiant : ");
-                System.out.println("1-list des documents ");
-                System.out.println("2-list des document disponible");
-                System.out.println("3-list des document emprunter par vous ");
-                System.out.println("5-Deconnecta");
-                String choix =(new Scanner(System.in)).nextLine();
-                }else if(k.c.getTypeClient().equals("Professeur")){
-                System.out.println("Menu Professeur : ");
-                System.out.println("1-list des documents ");
-                System.out.println("2-list des document disponible");
-                System.out.println("3-list des document emprunter par vous ");
-                System.out.println("4-Deconnecté");
-                String choix =(new Scanner(System.in)).nextLine();
+        switch (k.c.getTypeClient()) {
+            case "Etudiant":
+                {
+                    System.out.println("Menu Etudiant : ");
+                    System.out.println("1-list des documents ");
+                    System.out.println("2-list des document disponible");
+                    System.out.println("3-list des document emprunter par vous ");
+                    System.out.println("5-Deconnecta");
+                    String choix =(new Scanner(System.in)).nextLine();
+                    break;
                 }
+            case "Professeur":
+                {
+                    System.out.println("Menu Professeur : ");
+                    System.out.println("1-list des documents ");
+                    System.out.println("2-list des document disponible");
+                    System.out.println("3-list des document emprunter par vous ");
+                    System.out.println("4-Deconnecté");
+                    String choix =(new Scanner(System.in)).nextLine();
+                }
+        }
    }
     
 }
