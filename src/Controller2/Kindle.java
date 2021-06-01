@@ -74,7 +74,8 @@ public class Kindle {
             }
         if("Etudiant".equals(c.getTypeClient())){
                 Thread_timelimit tr=new Thread_timelimit();
-                tr.start();}
+                tr.start();
+        }
                 System.out.println("bienvenue " + c.getNom() +" "+ c.getPrenom()+"\n ");
                 System.out.println("vous ete connecté par le kindle : "+kindle+"]");
                 return true;

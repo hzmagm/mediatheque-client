@@ -10,15 +10,12 @@ package Model;
  * @author HP
  */
 public class Thread_timelimit extends Thread{
-
-    
     @Override
     public void run(){
 
 
         try{
-           
-             this.sleep(10);
+            this.sleep(10800000);
         }catch(InterruptedException inte){
 
         }
