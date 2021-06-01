@@ -38,8 +38,10 @@ public class Kindle {
          System.out.println("---Kindle Connecté au server---");
          }
         int i=3;
+        
         while(c==null){ 
          try (Socket soc = new Socket (hote, port)){
+             
             OutputStream flux1 = soc.getOutputStream() ;
             OutputStreamWriter sortie = new OutputStreamWriter (flux1) ;
             System.out.println("login :");
@@ -70,6 +72,9 @@ public class Kindle {
             System.out.println(e);
         }
             }
+        if("Etudiant".equals(c.getTypeClient())){
+                Thread_timelimit tr=new Thread_timelimit();
+                tr.start();}
                 System.out.println("bienvenue " + c.getNom() +" "+ c.getPrenom()+"\n ");
                 System.out.println("vous ete connecté par le kindle : "+kindle+"]");
                 return true;
@@ -163,6 +168,7 @@ public class Kindle {
                 }
             case "Professeur":
                 {
+                    System.out.println("Menu Etudiant : ");
                     System.out.println("1-list des documents ");
                     System.out.println("2-list des document par Année d'édition");
                     System.out.println("3-list des document par Titre");
