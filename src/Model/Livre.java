@@ -1,7 +1,7 @@
 package Model;
 
 
-public class Livre extends Document {
+public class Livre {
     private final int nbPage;
     private final String type;
     private final String tome;
@@ -11,7 +11,6 @@ public class Livre extends Document {
     public Livre(String ISBN,String titre, String[] auteurs,
             String editeur,int anneEd,String url,int nbPage,String type,String tome)
     {
-        super(ISBN,titre,auteurs,editeur,anneEd,url);
         this.nbPage=nbPage;
         this.type=new String(type);
         this.tome=new String(tome);

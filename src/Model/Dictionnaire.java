@@ -1,7 +1,7 @@
 
 package Model;
 
-public class Dictionnaire extends Document{
+public class Dictionnaire {
     
     private final String langue;
     private final int nbTome;
@@ -11,7 +11,6 @@ public class Dictionnaire extends Document{
     public Dictionnaire(String ISBN,String titre, String[] auteurs,
             String editeur,int anneEd,String url,String langue,int nbTome)
     {
-        super(ISBN,titre,auteurs,editeur,anneEd,url);
         this.langue=new String(langue);
         this.nbTome=nbTome;
     }

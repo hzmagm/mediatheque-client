@@ -1,6 +1,6 @@
 package Model;
 
-public class Magazine extends Document{
+public class Magazine {
     
     private String periodicite;
     private final int mois;
@@ -11,8 +11,6 @@ public class Magazine extends Document{
     public Magazine(String ISBN,String titre, String[] auteurs,
             String editeur,int anneEd,String url,String period,int mois,int jour)
     {
-        super(ISBN,titre,auteurs,editeur,anneEd,url);
-        
         this.periodicite=new String(period);
         this.jour=jour;
         this.mois=mois;
